@@ -1,6 +1,8 @@
 # Image Focus Detector
 
-[![PyPI version](https://badge.fury.io/py/image-focus-detector.svg)](https://badge.fury.io/py/image-focus-detector) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) A Python package to detect salient or important regions (Regions of Interest - ROIs) within an image using a pre-trained Vision Transformer (ViT) model executed via ONNX Runtime.
+[![PyPI version](https://badge.fury.io/py/image-focus-detector.svg)](https://badge.fury.io/py/image-focus-detector) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+
+A Python package to detect salient or important regions (Regions of Interest - ROIs) within an image using a pre-trained Vision Transformer (ViT) model executed via ONNX Runtime.
 
 This package analyzes an input image and outputs a list of potential regions that are considered visually important, along with their bounding boxes and saliency scores.
 
@@ -99,57 +101,3 @@ ax.axis('off')
 plt.tight_layout()
 plt.show()
 ```
-
-API Overview
-Salency()
-Initializes the detector class. Loads the ONNX model upon creation.
-
-Salency.find_regions_of_interest(img, roi_threshold=0.8, score_threshold=0.9, min_contour_area=100)
-Takes a PIL Image object (img) in RGB format as input.
-
-Detects ROIs based on the internal saliency heatmap.
-
-Parameters:
-
-img (PIL.Image.Image): Input image (RGB).
-
-roi_threshold (float, optional): Threshold (0-1) applied to the normalized heatmap to create a binary mask for finding contours. Default: 0.8.
-
-score_threshold (float or None, optional): Minimum acceptable value for the maximum score within a detected ROI's contour. ROIs below this threshold are filtered out. If None, no filtering by score is performed. Default: 0.9.
-
-min_contour_area (int, optional): Minimum area in pixels for a contour to be considered a valid ROI. Default: 100.
-
-Returns:
-
-List[Dict]: A list of dictionaries, where each dictionary represents a detected ROI and contains keys like:
-
-'score_max': The maximum saliency score within the ROI contour.
-
-'score_mean': The average saliency score within the ROI contour.
-
-'x', 'y', 'w', 'h': Coordinates and dimensions of the bounding box around the ROI.
-
-The list is sorted by 'score_max' in descending order.
-
-Dependencies
-This package relies on the following major libraries:
-
-onnxruntime: For running the ONNX model.
-
-numpy: For numerical operations.
-
-Pillow: For image loading and manipulation.
-
-opencv-python-headless: For image processing tasks (resizing, contours, etc.). Uses the headless version to avoid GUI dependencies.
-
-albumentations: For image preprocessing augmentations.
-
-requests (for the example): Used only in the usage example to fetch images. Not a core dependency of the library itself unless you integrate URL fetching directly.
-
-See pyproject.toml for specific version requirements.
-
-License
-This project is licensed under the MIT License - see the LICENSE file (you should create one) for details.
-
-Contributing
-Contributions are welcome! Please feel free to submit issues or pull requests on the [GitHub repository](https://github.com/julesGoueffon/img_saliency)
