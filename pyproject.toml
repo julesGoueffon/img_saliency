@@ -1,0 +1,43 @@
+# image_focus_detector/pyproject.toml
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "img-focus"
+version = "0.1.0"
+authors = [
+  { name="Goueffon Jules", email="jules.goueffon89@gmail.com" },
+]
+description = "Find image regions of interest with an ONNX ViT."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Image Processing",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+]
+dependencies = [
+    "numpy",
+    "opencv-python-headless",
+    "Pillow",
+    "onnxruntime",
+    "albumentations",
+]
+
+[project.urls] # Liens optionnels
+"Homepage" = "https://github.com/julesGoueffon/jgo_saliency" # Mettez l'URL de votre repo si public
+"Bug Tracker" = "https://github.com/julesGoueffon/jgo_saliency/issues"
+
+# --- Configuration spécifique à Setuptools ---
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["img_focus*"]
+
+[tool.setuptools.package-data]
+"image_focus" = ["models/*.onnx"]
