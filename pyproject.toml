@@ -28,6 +28,7 @@ dependencies = [
     "Pillow",
     "onnxruntime",
     "albumentations",
+    "importlib-resources",
 ]
 
 [project.urls] # Liens optionnels
@@ -40,4 +41,4 @@ where = ["src"]
 include = ["img_focus*"]
 
 [tool.setuptools.package-data]
-"image_focus" = ["models/*.onnx"]
+"img_focus" = ["models/*.onnx"]
